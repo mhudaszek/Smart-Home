@@ -21,8 +21,9 @@ class AppCoordinator: Coordinator {
     }
 
     func start() {
-        let vc = ViewController()
-        navigationController.setViewControllers([vc], animated: true)
+        let onboardingViewController = OnboardingViewController()
+        navigationController.navigationBar.isHidden = true
+        navigationController.setViewControllers([onboardingViewController], animated: true)
     }
 
     func removeOnboardingCoordinator() {

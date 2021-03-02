@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,13 @@
 		02DD40EB25ED86180060BA75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02DD40EA25ED86180060BA75 /* Assets.xcassets */; };
 		02DD40EE25ED86180060BA75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02DD40EC25ED86180060BA75 /* LaunchScreen.storyboard */; };
 		02DD412925EED33D0060BA75 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD412825EED33D0060BA75 /* AppCoordinator.swift */; };
+		02DD413225EEDD150060BA75 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD413125EEDD150060BA75 /* OnboardingView.swift */; };
+		02DD413625EEDD400060BA75 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD413525EEDD400060BA75 /* View.swift */; };
+		02DD414025EEDF310060BA75 /* lamp-outline.json in Resources */ = {isa = PBXBuildFile; fileRef = 02DD413D25EEDF310060BA75 /* lamp-outline.json */; };
+		02DD414125EEDF310060BA75 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 02DD413E25EEDF310060BA75 /* loading.json */; };
+		02DD414225EEDF310060BA75 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 02DD413F25EEDF310060BA75 /* success.json */; };
+		02DD414525EEDF8B0060BA75 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD414425EEDF8B0060BA75 /* OnboardingViewController.swift */; };
+		6D6E51CFEED55712E6598EF3 /* Pods_Smart_Home.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D261C5B4D36190D471C653E9 /* Pods_Smart_Home.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,15 @@
 		02DD40ED25ED86180060BA75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02DD40EF25ED86180060BA75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02DD412825EED33D0060BA75 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		02DD413125EEDD150060BA75 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		02DD413525EEDD400060BA75 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		02DD413D25EEDF310060BA75 /* lamp-outline.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "lamp-outline.json"; sourceTree = "<group>"; };
+		02DD413E25EEDF310060BA75 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		02DD413F25EEDF310060BA75 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
+		02DD414425EEDF8B0060BA75 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		621BD0D63AB4581F338823F6 /* Pods-Smart Home.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart Home.debug.xcconfig"; path = "Target Support Files/Pods-Smart Home/Pods-Smart Home.debug.xcconfig"; sourceTree = "<group>"; };
+		D261C5B4D36190D471C653E9 /* Pods_Smart_Home.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart_Home.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9F9FFCE55FB62F75EE0AC18 /* Pods-Smart Home.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart Home.release.xcconfig"; path = "Target Support Files/Pods-Smart Home/Pods-Smart Home.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D6E51CFEED55712E6598EF3 /* Pods_Smart_Home.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +59,8 @@
 			children = (
 				02DD40E025ED86150060BA75 /* Smart Home */,
 				02DD40DF25ED86150060BA75 /* Products */,
+				E48D75D21576EDD79CA27862 /* Pods */,
+				DF574F055DB57EE6A9E94633 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +76,11 @@
 			isa = PBXGroup;
 			children = (
 				02DD412725EED31B0060BA75 /* Coordinators */,
+				02DD413425EEDD340060BA75 /* Base */,
+				02DD412F25EEDCFB0060BA75 /* Main */,
+				02DD413C25EEDF310060BA75 /* Resource */,
 				02DD40E125ED86150060BA75 /* AppDelegate.swift */,
 				02DD40E325ED86150060BA75 /* SceneDelegate.swift */,
-				02DD40E525ED86150060BA75 /* ViewController.swift */,
 				02DD40EA25ED86180060BA75 /* Assets.xcassets */,
 				02DD40EC25ED86180060BA75 /* LaunchScreen.storyboard */,
 				02DD40EF25ED86180060BA75 /* Info.plist */,
@@ -75,6 +96,60 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
+		02DD412F25EEDCFB0060BA75 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				02DD413025EEDD060060BA75 /* Onboarding */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		02DD413025EEDD060060BA75 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				02DD413125EEDD150060BA75 /* OnboardingView.swift */,
+				02DD414425EEDF8B0060BA75 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		02DD413425EEDD340060BA75 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				02DD413525EEDD400060BA75 /* View.swift */,
+				02DD40E525ED86150060BA75 /* ViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		02DD413C25EEDF310060BA75 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				02DD413D25EEDF310060BA75 /* lamp-outline.json */,
+				02DD413E25EEDF310060BA75 /* loading.json */,
+				02DD413F25EEDF310060BA75 /* success.json */,
+			);
+			name = Resource;
+			path = "Smart Home/Resource";
+			sourceTree = SOURCE_ROOT;
+		};
+		DF574F055DB57EE6A9E94633 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D261C5B4D36190D471C653E9 /* Pods_Smart_Home.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E48D75D21576EDD79CA27862 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				621BD0D63AB4581F338823F6 /* Pods-Smart Home.debug.xcconfig */,
+				D9F9FFCE55FB62F75EE0AC18 /* Pods-Smart Home.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +157,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 02DD40F225ED86180060BA75 /* Build configuration list for PBXNativeTarget "Smart Home" */;
 			buildPhases = (
+				893BFD832B7ECF10ED9EA521 /* [CP] Check Pods Manifest.lock */,
 				02DD40DA25ED86150060BA75 /* Sources */,
 				02DD40DB25ED86150060BA75 /* Frameworks */,
 				02DD40DC25ED86150060BA75 /* Resources */,
+				311E326E4202B774EEC46E27 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,12 +209,57 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02DD414225EEDF310060BA75 /* success.json in Resources */,
 				02DD40EE25ED86180060BA75 /* LaunchScreen.storyboard in Resources */,
+				02DD414025EEDF310060BA75 /* lamp-outline.json in Resources */,
+				02DD414125EEDF310060BA75 /* loading.json in Resources */,
 				02DD40EB25ED86180060BA75 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		311E326E4202B774EEC46E27 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Smart Home/Pods-Smart Home-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Smart Home/Pods-Smart Home-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Smart Home/Pods-Smart Home-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		893BFD832B7ECF10ED9EA521 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Smart Home-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		02DD40DA25ED86150060BA75 /* Sources */ = {
@@ -146,7 +268,10 @@
 			files = (
 				02DD412925EED33D0060BA75 /* AppCoordinator.swift in Sources */,
 				02DD40E625ED86150060BA75 /* ViewController.swift in Sources */,
+				02DD413625EEDD400060BA75 /* View.swift in Sources */,
 				02DD40E225ED86150060BA75 /* AppDelegate.swift in Sources */,
+				02DD414525EEDF8B0060BA75 /* OnboardingViewController.swift in Sources */,
+				02DD413225EEDD150060BA75 /* OnboardingView.swift in Sources */,
 				02DD40E425ED86150060BA75 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +408,7 @@
 		};
 		02DD40F325ED86180060BA75 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 621BD0D63AB4581F338823F6 /* Pods-Smart Home.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +428,7 @@
 		};
 		02DD40F425ED86180060BA75 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9F9FFCE55FB62F75EE0AC18 /* Pods-Smart Home.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
