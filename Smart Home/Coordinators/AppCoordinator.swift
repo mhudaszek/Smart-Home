@@ -22,11 +22,17 @@ class AppCoordinator: Coordinator {
 
     func start() {
         let onboardingViewController = OnboardingViewController()
+        onboardingViewController.coordinator = self
         navigationController.navigationBar.isHidden = true
         navigationController.setViewControllers([onboardingViewController], animated: true)
     }
 
     func removeOnboardingCoordinator() {
         childCoordinators.removeFirst()
+    }
+
+    func coordinateToTabBar() {
+        let mainViewController = MainViewController()
+        navigationController.setViewControllers([mainViewController], animated: true)
     }
 }

@@ -19,6 +19,10 @@
 		02DD414125EEDF310060BA75 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 02DD413E25EEDF310060BA75 /* loading.json */; };
 		02DD414225EEDF310060BA75 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 02DD413F25EEDF310060BA75 /* success.json */; };
 		02DD414525EEDF8B0060BA75 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD414425EEDF8B0060BA75 /* OnboardingViewController.swift */; };
+		02DD415825F0164A0060BA75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02DD415725F016490060BA75 /* GoogleService-Info.plist */; };
+		02DD418F25F02C930060BA75 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD418E25F02C920060BA75 /* MainViewController.swift */; };
+		02DD419225F02CAB0060BA75 /* MainViewController+Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD419125F02CAB0060BA75 /* MainViewController+Tab.swift */; };
+		02DD419825F02F070060BA75 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD419725F02F070060BA75 /* HomeViewController.swift */; };
 		6D6E51CFEED55712E6598EF3 /* Pods_Smart_Home.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D261C5B4D36190D471C653E9 /* Pods_Smart_Home.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +41,10 @@
 		02DD413E25EEDF310060BA75 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		02DD413F25EEDF310060BA75 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		02DD414425EEDF8B0060BA75 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		02DD415725F016490060BA75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		02DD418E25F02C920060BA75 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		02DD419125F02CAB0060BA75 /* MainViewController+Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Tab.swift"; sourceTree = "<group>"; };
+		02DD419725F02F070060BA75 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		621BD0D63AB4581F338823F6 /* Pods-Smart Home.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart Home.debug.xcconfig"; path = "Target Support Files/Pods-Smart Home/Pods-Smart Home.debug.xcconfig"; sourceTree = "<group>"; };
 		D261C5B4D36190D471C653E9 /* Pods_Smart_Home.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart_Home.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F9FFCE55FB62F75EE0AC18 /* Pods-Smart Home.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart Home.release.xcconfig"; path = "Target Support Files/Pods-Smart Home/Pods-Smart Home.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +92,7 @@
 				02DD40EA25ED86180060BA75 /* Assets.xcassets */,
 				02DD40EC25ED86180060BA75 /* LaunchScreen.storyboard */,
 				02DD40EF25ED86180060BA75 /* Info.plist */,
+				02DD415725F016490060BA75 /* GoogleService-Info.plist */,
 			);
 			path = "Smart Home";
 			sourceTree = "<group>";
@@ -99,7 +108,10 @@
 		02DD412F25EEDCFB0060BA75 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				02DD418E25F02C920060BA75 /* MainViewController.swift */,
+				02DD419125F02CAB0060BA75 /* MainViewController+Tab.swift */,
 				02DD413025EEDD060060BA75 /* Onboarding */,
+				02DD419625F02EE80060BA75 /* Home */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -132,6 +144,14 @@
 			name = Resource;
 			path = "Smart Home/Resource";
 			sourceTree = SOURCE_ROOT;
+		};
+		02DD419625F02EE80060BA75 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				02DD419725F02F070060BA75 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
 		};
 		DF574F055DB57EE6A9E94633 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -214,6 +234,7 @@
 				02DD414025EEDF310060BA75 /* lamp-outline.json in Resources */,
 				02DD414125EEDF310060BA75 /* loading.json in Resources */,
 				02DD40EB25ED86180060BA75 /* Assets.xcassets in Resources */,
+				02DD415825F0164A0060BA75 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,11 +289,14 @@
 			files = (
 				02DD412925EED33D0060BA75 /* AppCoordinator.swift in Sources */,
 				02DD40E625ED86150060BA75 /* ViewController.swift in Sources */,
+				02DD419225F02CAB0060BA75 /* MainViewController+Tab.swift in Sources */,
 				02DD413625EEDD400060BA75 /* View.swift in Sources */,
 				02DD40E225ED86150060BA75 /* AppDelegate.swift in Sources */,
+				02DD419825F02F070060BA75 /* HomeViewController.swift in Sources */,
 				02DD414525EEDF8B0060BA75 /* OnboardingViewController.swift in Sources */,
 				02DD413225EEDD150060BA75 /* OnboardingView.swift in Sources */,
 				02DD40E425ED86150060BA75 /* SceneDelegate.swift in Sources */,
+				02DD418F25F02C930060BA75 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,7 +443,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-.Smart-Home";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.app.smart-home";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -439,7 +463,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-.Smart-Home";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.app.smart-home";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

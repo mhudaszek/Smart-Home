@@ -7,5 +7,9 @@ target 'Smart Home' do
 
   # Pods for Smart Home
   pod 'lottie-ios' 
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Database'
+  pod 'RxSwift', '~> 5.1.0'
+  pod 'RxCocoa', '~> 5.1.0'
 
 end
