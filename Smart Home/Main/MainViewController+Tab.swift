@@ -18,7 +18,9 @@ extension MainViewController {
             var rootViewController = UIViewController()
             switch self {
             case .live:
-                let homeViewController = HomeViewController()
+                let homeViewModel = HomeViewModel()
+                let homeViewController = HomeViewController(viewModel: homeViewModel)
+//                rootViewController = UINavigationController(rootViewController: homeViewController)
                 rootViewController = getNavigationController(rootViewController: homeViewController)
             default:
                 break
@@ -43,7 +45,9 @@ extension MainViewController {
         private func getNavigationController(rootViewController: UIViewController) -> UINavigationController {
             let navigationController = UINavigationController(rootViewController: rootViewController)
             navigationController.navigationBar.isTranslucent = false
-//            navigationController.navigationBar.barTintColor = .purpleColor
+            navigationController.navigationBar.barTintColor = .white
+            navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
+
             navigationController.navigationBar.setBackgroundImage(UIImage(), for:.default)
             navigationController.navigationBar.shadowImage = UIImage()
             navigationController.navigationBar.layoutIfNeeded()

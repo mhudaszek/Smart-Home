@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		024C6BC425FCC43C0054ADFF /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024C6BC325FCC43C0054ADFF /* UIViewController+Extensions.swift */; };
+		02617AEB25FAA08800430385 /* DeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617AEA25FAA08800430385 /* DeviceCell.swift */; };
+		02617AEF25FAA0B400430385 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617AEE25FAA0B400430385 /* CollectionViewCell.swift */; };
+		02617AF225FAA0D700430385 /* Reusable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617AF125FAA0D700430385 /* Reusable+Extensions.swift */; };
+		02617AF525FAA3F600430385 /* DeviceCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617AF425FAA3F600430385 /* DeviceCellViewModel.swift */; };
+		02617AF825FAA64F00430385 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617AF725FAA64F00430385 /* UICollectionView+Extensions.swift */; };
+		02617AFB25FAA6A200430385 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617AFA25FAA6A200430385 /* HomeViewModel.swift */; };
+		02617AFF25FAAD6400430385 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617AFE25FAAD6400430385 /* HTTPMethod.swift */; };
+		02617B0325FAADBE00430385 /* HTTPHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617B0225FAADBE00430385 /* HTTPHeaders.swift */; };
+		02617B0625FAAE0700430385 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617B0525FAAE0700430385 /* Request.swift */; };
+		02617B0A25FAAE3F00430385 /* JSONData+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617B0925FAAE3F00430385 /* JSONData+Extensions.swift */; };
+		02617B0D25FAAEF700430385 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617B0C25FAAEF700430385 /* Networking.swift */; };
+		02617B1125FAAF0E00430385 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617B1025FAAF0E00430385 /* NetworkError.swift */; };
+		02617B1525FAAF5800430385 /* DevicesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617B1425FAAF5800430385 /* DevicesRequest.swift */; };
+		02617B1925FAAFF200430385 /* DevicesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617B1825FAAFF200430385 /* DevicesResponse.swift */; };
+		02617B1C25FAB15900430385 /* OpenGateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617B1B25FAB15900430385 /* OpenGateResponse.swift */; };
+		02617B1F25FAB7DF00430385 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617B1E25FAB7DF00430385 /* CollectionView.swift */; };
 		02DD40E225ED86150060BA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD40E125ED86150060BA75 /* AppDelegate.swift */; };
 		02DD40E425ED86150060BA75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD40E325ED86150060BA75 /* SceneDelegate.swift */; };
 		02DD40E625ED86150060BA75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD40E525ED86150060BA75 /* ViewController.swift */; };
@@ -23,10 +40,29 @@
 		02DD418F25F02C930060BA75 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD418E25F02C920060BA75 /* MainViewController.swift */; };
 		02DD419225F02CAB0060BA75 /* MainViewController+Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD419125F02CAB0060BA75 /* MainViewController+Tab.swift */; };
 		02DD419825F02F070060BA75 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD419725F02F070060BA75 /* HomeViewController.swift */; };
+		02DD41CD25F18A2E0060BA75 /* Configurable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD41CC25F18A2E0060BA75 /* Configurable+Extensions.swift */; };
+		02DD41D325F18AEB0060BA75 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD41D225F18AEB0060BA75 /* UIView+Extensions.swift */; };
 		6D6E51CFEED55712E6598EF3 /* Pods_Smart_Home.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D261C5B4D36190D471C653E9 /* Pods_Smart_Home.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		024C6BC325FCC43C0054ADFF /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		02617AEA25FAA08800430385 /* DeviceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCell.swift; sourceTree = "<group>"; };
+		02617AEE25FAA0B400430385 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		02617AF125FAA0D700430385 /* Reusable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reusable+Extensions.swift"; sourceTree = "<group>"; };
+		02617AF425FAA3F600430385 /* DeviceCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCellViewModel.swift; sourceTree = "<group>"; };
+		02617AF725FAA64F00430385 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		02617AFA25FAA6A200430385 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		02617AFE25FAAD6400430385 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		02617B0225FAADBE00430385 /* HTTPHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaders.swift; sourceTree = "<group>"; };
+		02617B0525FAAE0700430385 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		02617B0925FAAE3F00430385 /* JSONData+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONData+Extensions.swift"; sourceTree = "<group>"; };
+		02617B0C25FAAEF700430385 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		02617B1025FAAF0E00430385 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		02617B1425FAAF5800430385 /* DevicesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesRequest.swift; sourceTree = "<group>"; };
+		02617B1825FAAFF200430385 /* DevicesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesResponse.swift; sourceTree = "<group>"; };
+		02617B1B25FAB15900430385 /* OpenGateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenGateResponse.swift; sourceTree = "<group>"; };
+		02617B1E25FAB7DF00430385 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		02DD40DE25ED86150060BA75 /* Smart Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02DD40E125ED86150060BA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02DD40E325ED86150060BA75 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +81,8 @@
 		02DD418E25F02C920060BA75 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		02DD419125F02CAB0060BA75 /* MainViewController+Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Tab.swift"; sourceTree = "<group>"; };
 		02DD419725F02F070060BA75 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		02DD41CC25F18A2E0060BA75 /* Configurable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Configurable+Extensions.swift"; sourceTree = "<group>"; };
+		02DD41D225F18AEB0060BA75 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		621BD0D63AB4581F338823F6 /* Pods-Smart Home.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart Home.debug.xcconfig"; path = "Target Support Files/Pods-Smart Home/Pods-Smart Home.debug.xcconfig"; sourceTree = "<group>"; };
 		D261C5B4D36190D471C653E9 /* Pods_Smart_Home.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart_Home.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F9FFCE55FB62F75EE0AC18 /* Pods-Smart Home.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart Home.release.xcconfig"; path = "Target Support Files/Pods-Smart Home/Pods-Smart Home.release.xcconfig"; sourceTree = "<group>"; };
@@ -62,6 +100,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02617AE925FAA03900430385 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				02617AEA25FAA08800430385 /* DeviceCell.swift */,
+				02617AF425FAA3F600430385 /* DeviceCellViewModel.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		02617AFD25FAAD2300430385 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				02617B1325FAAF2700430385 /* Requests */,
+				02617B1725FAAFCF00430385 /* Response */,
+				02617B0125FAADB300430385 /* HTTP */,
+				02617B0525FAAE0700430385 /* Request.swift */,
+				02617B0C25FAAEF700430385 /* Networking.swift */,
+				02617B1025FAAF0E00430385 /* NetworkError.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		02617B0125FAADB300430385 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				02617AFE25FAAD6400430385 /* HTTPMethod.swift */,
+				02617B0225FAADBE00430385 /* HTTPHeaders.swift */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		02617B0825FAAE2600430385 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				02617B0925FAAE3F00430385 /* JSONData+Extensions.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		02617B1325FAAF2700430385 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				02617B1425FAAF5800430385 /* DevicesRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		02617B1725FAAFCF00430385 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				02617B1825FAAFF200430385 /* DevicesResponse.swift */,
+				02617B1B25FAB15900430385 /* OpenGateResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		02DD40D525ED86150060BA75 = {
 			isa = PBXGroup;
 			children = (
@@ -83,8 +177,10 @@
 		02DD40E025ED86150060BA75 /* Smart Home */ = {
 			isa = PBXGroup;
 			children = (
+				02DD41CF25F18A360060BA75 /* Extensions */,
 				02DD412725EED31B0060BA75 /* Coordinators */,
 				02DD413425EEDD340060BA75 /* Base */,
+				02617AFD25FAAD2300430385 /* Networking */,
 				02DD412F25EEDCFB0060BA75 /* Main */,
 				02DD413C25EEDF310060BA75 /* Resource */,
 				02DD40E125ED86150060BA75 /* AppDelegate.swift */,
@@ -130,6 +226,8 @@
 			children = (
 				02DD413525EEDD400060BA75 /* View.swift */,
 				02DD40E525ED86150060BA75 /* ViewController.swift */,
+				02617AEE25FAA0B400430385 /* CollectionViewCell.swift */,
+				02617B1E25FAB7DF00430385 /* CollectionView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -148,9 +246,24 @@
 		02DD419625F02EE80060BA75 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				02617AE925FAA03900430385 /* Cell */,
 				02DD419725F02F070060BA75 /* HomeViewController.swift */,
+				02617AFA25FAA6A200430385 /* HomeViewModel.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		02DD41CF25F18A360060BA75 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				02617B0825FAAE2600430385 /* Networking */,
+				02DD41CC25F18A2E0060BA75 /* Configurable+Extensions.swift */,
+				02DD41D225F18AEB0060BA75 /* UIView+Extensions.swift */,
+				02617AF125FAA0D700430385 /* Reusable+Extensions.swift */,
+				02617AF725FAA64F00430385 /* UICollectionView+Extensions.swift */,
+				024C6BC325FCC43C0054ADFF /* UIViewController+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		DF574F055DB57EE6A9E94633 /* Frameworks */ = {
@@ -287,16 +400,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02617AFF25FAAD6400430385 /* HTTPMethod.swift in Sources */,
+				02617AF525FAA3F600430385 /* DeviceCellViewModel.swift in Sources */,
+				02617B1F25FAB7DF00430385 /* CollectionView.swift in Sources */,
+				02617AFB25FAA6A200430385 /* HomeViewModel.swift in Sources */,
+				02617AF825FAA64F00430385 /* UICollectionView+Extensions.swift in Sources */,
+				02617B1925FAAFF200430385 /* DevicesResponse.swift in Sources */,
+				02617B0625FAAE0700430385 /* Request.swift in Sources */,
 				02DD412925EED33D0060BA75 /* AppCoordinator.swift in Sources */,
 				02DD40E625ED86150060BA75 /* ViewController.swift in Sources */,
+				02617B0D25FAAEF700430385 /* Networking.swift in Sources */,
 				02DD419225F02CAB0060BA75 /* MainViewController+Tab.swift in Sources */,
+				02617B1125FAAF0E00430385 /* NetworkError.swift in Sources */,
 				02DD413625EEDD400060BA75 /* View.swift in Sources */,
 				02DD40E225ED86150060BA75 /* AppDelegate.swift in Sources */,
+				02617AEB25FAA08800430385 /* DeviceCell.swift in Sources */,
+				02DD41D325F18AEB0060BA75 /* UIView+Extensions.swift in Sources */,
+				02617AF225FAA0D700430385 /* Reusable+Extensions.swift in Sources */,
+				02617B1C25FAB15900430385 /* OpenGateResponse.swift in Sources */,
+				02617B0325FAADBE00430385 /* HTTPHeaders.swift in Sources */,
 				02DD419825F02F070060BA75 /* HomeViewController.swift in Sources */,
 				02DD414525EEDF8B0060BA75 /* OnboardingViewController.swift in Sources */,
+				02617B1525FAAF5800430385 /* DevicesRequest.swift in Sources */,
+				02DD41CD25F18A2E0060BA75 /* Configurable+Extensions.swift in Sources */,
+				02617B0A25FAAE3F00430385 /* JSONData+Extensions.swift in Sources */,
+				02617AEF25FAA0B400430385 /* CollectionViewCell.swift in Sources */,
 				02DD413225EEDD150060BA75 /* OnboardingView.swift in Sources */,
 				02DD40E425ED86150060BA75 /* SceneDelegate.swift in Sources */,
 				02DD418F25F02C930060BA75 /* MainViewController.swift in Sources */,
+				024C6BC425FCC43C0054ADFF /* UIViewController+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

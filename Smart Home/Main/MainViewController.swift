@@ -12,6 +12,7 @@ class MainViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         setupTabBar()
         tabBarItemTitles = getTabBarItemTitles()
     }

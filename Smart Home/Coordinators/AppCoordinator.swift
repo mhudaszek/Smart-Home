@@ -8,31 +8,43 @@
 import UIKit
 
 protocol Coordinator {
-    var navigationController: UINavigationController { get set }
     func start()
 }
 
 class AppCoordinator: Coordinator {
-    var navigationController: UINavigationController
+
+    private let window: UIWindow
+    private let rootViewController: UINavigationController
     private var childCoordinators = [Coordinator]()
 
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(window: UIWindow) {
+        self.window = window
+        rootViewController = UINavigationController()
     }
 
     func start() {
+
+
+        window.rootViewController = rootViewController
+        window.makeKeyAndVisible()
         let onboardingViewController = OnboardingViewController()
         onboardingViewController.coordinator = self
-        navigationController.navigationBar.isHidden = true
-        navigationController.setViewControllers([onboardingViewController], animated: true)
+        rootViewController.navigationBar.isHidden = true
+        rootViewController.setViewControllers([onboardingViewController],
+                                              animated: true)
     }
 
     func removeOnboardingCoordinator() {
         childCoordinators.removeFirst()
     }
 
-    func coordinateToTabBar() {
+    func showHomeScreen() {
+//        rootViewController.navigationBar.prefersLargeTitles = true
+//        rootViewController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+
         let mainViewController = MainViewController()
-        navigationController.setViewControllers([mainViewController], animated: true)
+        rootViewController.present(mainViewController,
+                                   style: .fullScreen,
+                                   animated: true)
     }
 }
