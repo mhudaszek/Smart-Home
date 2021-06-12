@@ -11,5 +11,6 @@ target 'Smart Home' do
   pod 'Firebase/Database'
   pod 'RxSwift', '~> 5.1.0'
   pod 'RxCocoa', '~> 5.1.0'
+  pod 'Kingfisher', '~> 6.0'
 
 end

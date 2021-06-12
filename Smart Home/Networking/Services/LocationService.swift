@@ -8,14 +8,13 @@
 import Foundation
 import CoreLocation
 import RxCocoa
-//import RxSwift
 
 class LocationService: NSObject {
     static let shared = LocationService()
     private var locationManager = CLLocationManager()
 
     var currentLocation: CLLocation?
-    var didUpdateLocations: BehaviorRelay<[CLLocation]> = BehaviorRelay(value: [])
+//    var didUpdateLocations: BehaviorRelay<[CLLocation]> = BehaviorRelay(value: [])
 
     func start() {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -27,15 +26,9 @@ class LocationService: NSObject {
 }
 
 extension LocationService: CLLocationManagerDelegate {
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        guard let location = locations.last else { return }
-//        currentLocation = location
-//        didUpdateLocations.accept(locations)
-//    }
-
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        currentLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -49,3 +42,10 @@ extension LocationService: CLLocationManagerDelegate {
 //        Log.error("\(error)")
     }
 }
+
+/*
+ <+50.01306152,+19.88056507> +/- 27.08m (speed 0.15 mps / course 79.02) @ 12/06/2021, 15:46:09 Central European Summer Time
+
+ locations = 50.01312099059193 19.880571331092085
+ locations = 50.01311819717853 19.88071473166365
+ */

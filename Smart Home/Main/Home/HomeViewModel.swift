@@ -14,11 +14,15 @@ final class HomeViewModel {
     private enum Constants {
         static let rootRefChild: String = "devices"
     }
+    private let service: WeatherService
     private let rootRef = Database.database().reference()
-
     let devices = BehaviorRelay<[Device]>(value: [])
     private var disposeBag = DisposeBag()
-
+    
+    init(service: WeatherService) {
+        self.service = service
+    }
+    
     func fetchDevices() {
         let conditionRef = rootRef.child(Constants.rootRefChild)
         conditionRef.observe(.value) { [weak self] snap in
@@ -28,7 +32,20 @@ final class HomeViewModel {
         }
     }
 
-    func fetchCurrentWeather() {
-        WeatherService.currentWeather()
+    func fetchCurrentWeather(completion: @escaping (WeatherModel) -> Void) {
+        fetchLocationData()
+        service.getWeatcher { [weak self] weatherDTO in
+            self?.service.getLocationData { locationDataDTO in
+                let model = WeatherModel(weatherDTO: weatherDTO, locationDataDTO: locationDataDTO)
+                completion(model)
+            }
+            
+        }
+    }
+    
+    func fetchLocationData() {
+        service.getLocationData { locationData in
+            print(locationData)
+        }
     }
 }

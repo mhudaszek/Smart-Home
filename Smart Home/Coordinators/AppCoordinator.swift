@@ -43,8 +43,8 @@ private extension AppCoordinator {
     func setupOnboardingRx(vc: OnboardingViewController) {
         vc.closeOnboarding
             .subscribe(with: self, onNext: { owner, steps in
-                owner.showHome()
                 LocationService.shared.start()
+                owner.showHome()
             }).disposed(by: disposeBag)
     }
 

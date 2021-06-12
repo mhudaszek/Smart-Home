@@ -10,6 +10,7 @@ import RxCocoa
 import RxSwift
 
 class HomeViewController: ViewController {
+    private let weatherView: WeatherView
     private let underlineSwitchView: UnderlineSwitchView
     private var collectionView = CollectionView().configure {
         let layout = UICollectionViewFlowLayout()
@@ -27,6 +28,7 @@ class HomeViewController: ViewController {
 
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
+        self.weatherView = WeatherView()
         let underlineSwitchViewModel = UnderlineSwitchViewModel()
         self.underlineSwitchView = UnderlineSwitchView(viewModel: underlineSwitchViewModel)
         super.init()
@@ -41,23 +43,33 @@ class HomeViewController: ViewController {
         setupNavigationBar()
         setupCollectionView()
         viewModel.fetchDevices()
-        viewModel.fetchCurrentWeather()
+        viewModel.fetchCurrentWeather { [weak self] model in
+            DispatchQueue.main.async {
+                self?.weatherView.setupView(with: model)
+            }
+        }
         setupRx()
     }
 }
 
 private extension HomeViewController {
     func addSubviews() {
+        view.addSubview(weatherView)
         view.addSubview(collectionView)
         view.addSubview(underlineSwitchView)
 //        view.activateConstraints(with: collectionView, left: 20, right: 20)
     }
 
     func setupLayout() {
+        weatherView.translatesAutoresizingMaskIntoConstraints = false
         underlineSwitchView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            weatherView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 10),
+            weatherView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            weatherView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
             underlineSwitchView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            underlineSwitchView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            underlineSwitchView.topAnchor.constraint(equalTo: weatherView.bottomAnchor, constant: 20),
             underlineSwitchView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             underlineSwitchView.bottomAnchor.constraint(equalTo: collectionView.topAnchor),
             underlineSwitchView.heightAnchor.constraint(equalToConstant: 50),

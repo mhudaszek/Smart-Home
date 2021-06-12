@@ -18,7 +18,7 @@ extension MainViewController {
             var rootViewController = UIViewController()
             switch self {
             case .live:
-                let homeViewModel = HomeViewModel()
+                let homeViewModel = HomeViewModel(service: WeatherService())
                 let homeViewController = HomeViewController(viewModel: homeViewModel)
 //                rootViewController = UINavigationController(rootViewController: homeViewController)
                 rootViewController = getNavigationController(rootViewController: homeViewController)

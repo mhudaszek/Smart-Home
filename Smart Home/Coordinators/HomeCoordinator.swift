@@ -15,7 +15,7 @@ class HomeCoordinator: Coordinator {
     }
 
     func start() {
-        let homeViewModel = HomeViewModel()
+        let homeViewModel = HomeViewModel(service: WeatherService())
         let homeViewController = HomeViewController(viewModel: homeViewModel)
 //        homeViewController.coordinator = self
         navigationController.pushViewController(homeViewController, animated: false)
