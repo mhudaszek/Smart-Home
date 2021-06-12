@@ -10,6 +10,7 @@ import RxCocoa
 import RxSwift
 
 class HomeViewController: ViewController {
+    private let underlineSwitchView: UnderlineSwitchView
     private var collectionView = CollectionView().configure {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -26,6 +27,8 @@ class HomeViewController: ViewController {
 
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
+        let underlineSwitchViewModel = UnderlineSwitchViewModel()
+        self.underlineSwitchView = UnderlineSwitchView(viewModel: underlineSwitchViewModel)
         super.init()
     }
 
@@ -33,18 +36,38 @@ class HomeViewController: ViewController {
         super.setup()
         title = "Home"
         view.backgroundColor = .white
+        addSubviews()
+        setupLayout()
         setupNavigationBar()
-        viewModel.fetchDevices()
-        setupRx()
-    }
-
-    override func setupProperties() {
-        super.setupProperties()
         setupCollectionView()
+        viewModel.fetchDevices()
+        viewModel.fetchCurrentWeather()
+        setupRx()
     }
 }
 
 private extension HomeViewController {
+    func addSubviews() {
+        view.addSubview(collectionView)
+        view.addSubview(underlineSwitchView)
+//        view.activateConstraints(with: collectionView, left: 20, right: 20)
+    }
+
+    func setupLayout() {
+        underlineSwitchView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            underlineSwitchView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            underlineSwitchView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            underlineSwitchView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            underlineSwitchView.bottomAnchor.constraint(equalTo: collectionView.topAnchor),
+            underlineSwitchView.heightAnchor.constraint(equalToConstant: 50),
+
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+
     func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .white
@@ -55,9 +78,6 @@ private extension HomeViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(DeviceCell.self)
-
-        view.addSubview(collectionView)
-        view.activateConstraints(with: collectionView, left: 20, right: 20)
     }
 
     func setupRx() {

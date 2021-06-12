@@ -16,15 +16,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        setupProperties()
-        setupSubviews()
-        setupConstraints()
+//        setupProperties()
+//        setupSubviews()
+//        setupConstraints()
     }
 
     func setup() {}
-    func setupProperties() {}
-    func setupSubviews() {}
-    func setupConstraints() {}
+//    func setupProperties() {}
+//    func setupSubviews() {}
+//    func setupConstraints() {}
 
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {

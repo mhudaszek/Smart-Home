@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import RxSwift
 
 class OnboardingViewController: ViewController {
     private let onboardingView = OnboardingView()
-    weak var coordinator: AppCoordinator?
+    let closeOnboarding = PublishSubject<Void>()
 
     override func loadView() {
         view = onboardingView
@@ -26,8 +27,7 @@ private extension OnboardingViewController {
         if !onboardingView.animationView.isAnimationPlaying {
             onboardingView.animationView.loopMode = .playOnce
             onboardingView.animationView.play { [weak self] _ in
-//                self?.dismiss(animated: false, completion: nil)
-                self?.coordinator?.showHomeScreen()
+                self?.closeOnboarding.onNext(())
             }
         }
     }

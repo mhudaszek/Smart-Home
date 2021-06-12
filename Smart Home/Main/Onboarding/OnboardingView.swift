@@ -14,26 +14,22 @@ class OnboardingView: View {
     override func setup() {
         super.setup()
         backgroundColor = .white
+        addSubviews()
+        setupConstraints()
     }
 
     override init() {
         animationView = AnimationView(name: "lamp-outline")
         super.init()
     }
-
-    override func setupSubviews() {
-        super.setupSubviews()
-        addSubview(animationView)
-    }
-
-    override func setupConstraints() {
-        super.setupConstraints()
-        layoutAnimationView()
-    }
 }
 
 private extension OnboardingView {
-    func layoutAnimationView() {
+    func addSubviews() {
+        addSubview(animationView)
+    }
+
+    func setupConstraints() {
         animationView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             animationView.centerXAnchor.constraint(equalTo: centerXAnchor),

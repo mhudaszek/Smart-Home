@@ -27,4 +27,8 @@ final class HomeViewModel {
             self?.devices.accept(devicesResponse.devices ?? [])
         }
     }
+
+    func fetchCurrentWeather() {
+        WeatherService.currentWeather()
+    }
 }
