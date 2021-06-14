@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02087A1D26768534001BA1A1 /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02087A1C26768534001BA1A1 /* FormTextField.swift */; };
+		02087A1F2677F04D001BA1A1 /* FormTextFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02087A1E2677F04D001BA1A1 /* FormTextFieldViewModel.swift */; };
+		02087A2126787690001BA1A1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02087A2026787690001BA1A1 /* LoginViewController.swift */; };
+		02087A23267876C7001BA1A1 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02087A22267876C7001BA1A1 /* GradientView.swift */; };
+		02087A2526787C21001BA1A1 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02087A2426787C21001BA1A1 /* LoginViewModel.swift */; };
 		024C6BC425FCC43C0054ADFF /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024C6BC325FCC43C0054ADFF /* UIViewController+Extensions.swift */; };
 		024C6BC825FD73040054ADFF /* DeviceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024C6BC725FD73040054ADFF /* DeviceDetailsViewController.swift */; };
 		025CCE4B262C66E60068EEFC /* ObservableType+WithPrevious.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025CCE4A262C66E60068EEFC /* ObservableType+WithPrevious.swift */; };
@@ -60,6 +65,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02087A1C26768534001BA1A1 /* FormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextField.swift; sourceTree = "<group>"; };
+		02087A1E2677F04D001BA1A1 /* FormTextFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldViewModel.swift; sourceTree = "<group>"; };
+		02087A2026787690001BA1A1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		02087A22267876C7001BA1A1 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		02087A2426787C21001BA1A1 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		024C6BC325FCC43C0054ADFF /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		024C6BC725FD73040054ADFF /* DeviceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailsViewController.swift; sourceTree = "<group>"; };
 		025CCE4A262C66E60068EEFC /* ObservableType+WithPrevious.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+WithPrevious.swift"; sourceTree = "<group>"; };
@@ -128,6 +138,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02087A1A26768504001BA1A1 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				02087A2026787690001BA1A1 /* LoginViewController.swift */,
+				02087A2426787C21001BA1A1 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		02087A1B26768522001BA1A1 /* Form Text Field */ = {
+			isa = PBXGroup;
+			children = (
+				02087A1C26768534001BA1A1 /* FormTextField.swift */,
+				02087A1E2677F04D001BA1A1 /* FormTextFieldViewModel.swift */,
+			);
+			path = "Form Text Field";
+			sourceTree = "<group>";
+		};
 		024C6BC625FD72F90054ADFF /* Details */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,7 +167,9 @@
 		025CCE69262C6CB10068EEFC /* Custom views */ = {
 			isa = PBXGroup;
 			children = (
+				02087A1B26768522001BA1A1 /* Form Text Field */,
 				025CCE6A262C6CB10068EEFC /* Underline Switch View */,
+				02087A22267876C7001BA1A1 /* GradientView.swift */,
 			);
 			path = "Custom views";
 			sourceTree = "<group>";
@@ -290,6 +320,7 @@
 		02DD412F25EEDCFB0060BA75 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				02087A1A26768504001BA1A1 /* Login */,
 				02CAB3402675002D00EAF1AC /* Weather section */,
 				02DD418E25F02C920060BA75 /* MainViewController.swift */,
 				02DD419125F02CAB0060BA75 /* MainViewController+Tab.swift */,
@@ -495,6 +526,7 @@
 				02617AF525FAA3F600430385 /* DeviceCellViewModel.swift in Sources */,
 				02617B1F25FAB7DF00430385 /* CollectionView.swift in Sources */,
 				02617AFB25FAA6A200430385 /* HomeViewModel.swift in Sources */,
+				02087A1F2677F04D001BA1A1 /* FormTextFieldViewModel.swift in Sources */,
 				0277CB82267540EF00E265BD /* WeatherRequest.swift in Sources */,
 				02617AF825FAA64F00430385 /* UICollectionView+Extensions.swift in Sources */,
 				02617B1925FAAFF200430385 /* DevicesResponse.swift in Sources */,
@@ -509,12 +541,14 @@
 				025CCE7A262DA1470068EEFC /* LocationService.swift in Sources */,
 				02617B1125FAAF0E00430385 /* NetworkError.swift in Sources */,
 				0277CB862675423C00E265BD /* WeatherService.swift in Sources */,
+				02087A2526787C21001BA1A1 /* LoginViewModel.swift in Sources */,
 				02DD413625EEDD400060BA75 /* View.swift in Sources */,
 				02DD40E225ED86150060BA75 /* AppDelegate.swift in Sources */,
 				02617AEB25FAA08800430385 /* DeviceCell.swift in Sources */,
 				02DD41D325F18AEB0060BA75 /* UIView+Extensions.swift in Sources */,
 				02617AF225FAA0D700430385 /* Reusable+Extensions.swift in Sources */,
 				025CCE4B262C66E60068EEFC /* ObservableType+WithPrevious.swift in Sources */,
+				02087A2126787690001BA1A1 /* LoginViewController.swift in Sources */,
 				02617B1C25FAB15900430385 /* OpenGateResponse.swift in Sources */,
 				02617B0325FAADBE00430385 /* HTTPHeaders.swift in Sources */,
 				02DD419825F02F070060BA75 /* HomeViewController.swift in Sources */,
@@ -525,6 +559,7 @@
 				02617AEF25FAA0B400430385 /* CollectionViewCell.swift in Sources */,
 				025CCE4E262C697F0068EEFC /* HomeCoordinator.swift in Sources */,
 				0277CB84267541B400E265BD /* NetworkService.swift in Sources */,
+				02087A23267876C7001BA1A1 /* GradientView.swift in Sources */,
 				025CCE71262C6CD50068EEFC /* StackView.swift in Sources */,
 				0277CB80267540BB00E265BD /* NetworkRequest.swift in Sources */,
 				0277CB8B26754C1D00E265BD /* LocationDataDTO.swift in Sources */,
@@ -533,6 +568,7 @@
 				025CCE6D262C6CB10068EEFC /* UnderlineSwitchViewModel.swift in Sources */,
 				02DD418F25F02C930060BA75 /* MainViewController.swift in Sources */,
 				024C6BC425FCC43C0054ADFF /* UIViewController+Extensions.swift in Sources */,
+				02087A1D26768534001BA1A1 /* FormTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

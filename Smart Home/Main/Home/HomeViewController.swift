@@ -9,6 +9,10 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+//wywalić
+import Firebase
+import FirebaseAuth
+
 class HomeViewController: ViewController {
     private let weatherView: WeatherView
     private let underlineSwitchView: UnderlineSwitchView
@@ -22,6 +26,7 @@ class HomeViewController: ViewController {
         $0.backgroundColor = .white
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
+    var formTextField = FormTextField()
 
     private let viewModel: HomeViewModel
     private var disposeBag = DisposeBag()
@@ -49,6 +54,27 @@ class HomeViewController: ViewController {
             }
         }
         setupRx()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+//            self.createUser()
+        }
+        let emailFieldViewModel = FormTextFieldViewModel(validators: [ValuePresenceValidator(fieldName: "e-mail address"), MailValidator()],
+                                                              image: #imageLiteral(resourceName: "bulbIconOn"),
+                                                              placeholderText: "Email")
+        formTextField.bind(viewModel: emailFieldViewModel)
+    }
+    
+    func createUser() {
+//        Auth.auth().createUser(withEmail: "nowyTestowy@o2.pl", password: "qwedsdfs") { result, error in
+//            print(result)
+//        }
+        
+//        Auth.auth().signIn(withEmail: "nowyTestowy@o2.pl", password: "qwedsdfs") { result, error in
+//            if error != nil {
+//                print("error")
+//            }
+//            print(result)
+//        }
     }
 }
 
@@ -57,12 +83,16 @@ private extension HomeViewController {
         view.addSubview(weatherView)
         view.addSubview(collectionView)
         view.addSubview(underlineSwitchView)
+        
+        view.addSubview(formTextField)
 //        view.activateConstraints(with: collectionView, left: 20, right: 20)
     }
 
     func setupLayout() {
         weatherView.translatesAutoresizingMaskIntoConstraints = false
         underlineSwitchView.translatesAutoresizingMaskIntoConstraints = false
+        formTextField.translatesAutoresizingMaskIntoConstraints = false
+        formTextField.backgroundColor = .yellow
         NSLayoutConstraint.activate([
             weatherView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 10),
             weatherView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -76,7 +106,14 @@ private extension HomeViewController {
 
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            formTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            formTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
+            formTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+//            formTextField.heightAnchor.constraint(equalToConstant: 50)
+//            formTextField.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            
         ])
     }
 
@@ -121,3 +158,38 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return CGSize(width: width, height: 120)
     }
 }
+
+
+//przenieść
+class ValuePresenceValidator: Validator {
+
+    let fieldName: String
+
+    init(fieldName: String) {
+        self.fieldName = fieldName
+    }
+
+    func validate(text: String) -> ValidationError {
+        if text.isEmpty {
+            return "\(fieldName.capitalized) cannot be empty"
+        } else {
+            return nil
+        }
+    }
+
+}
+
+
+//to też
+class MailValidator: Validator {
+
+    func validate(text: String) -> ValidationError {
+        if text.contains("@") {
+            return nil
+        } else {
+            return "Invalid e-mail address"
+        }
+    }
+
+}
+
