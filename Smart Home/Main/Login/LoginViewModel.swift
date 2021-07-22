@@ -26,18 +26,22 @@ class LoginViewModel {
 //                    && self?.passwordTextFieldViewModel.validate() ?? false
 //            }
 //    }
-    let emailTextFieldViewModel = FormTextFieldViewModel(image: #imageLiteral(resourceName: "bulbIconOn"), placeholderText: "Login")
-    let passwordTextFieldViewModel = FormTextFieldViewModel(image: #imageLiteral(resourceName: "bulbIconOn"), placeholderText: "Password")
+    let emailTextFieldViewModel = FormTextFieldViewModel(image: #imageLiteral(resourceName: "user_login_icon"),
+                                                         placeholderText: "Login")
+    let passwordTextFieldViewModel = FormTextFieldViewModel(image: #imageLiteral(resourceName: "password_Icon"),
+                                                            placeholderText: "Password",
+                                                            isSecureTextEntry: true)
     
     var loginButtonEnabled: Observable<Bool> {
         Observable.combineLatest(email.asObservable(), password.asObservable(), inProgress.asObservable())
-            .map { [weak self] _, _, inProgress in
-//                email.isValidEmail && password.meetsPasswordRequirements == .valid && !inProgress
-                return self?.emailTextFieldViewModel.validate() ?? false
-                    && self?.passwordTextFieldViewModel.validate() ?? false
+            .map { email, password, inProgress in
+                email.isValidEmail
+                    && !password.isEmpty
+                    && password.count > 3
                     && !inProgress
             }
     }
+ 
     private var disposeBag = DisposeBag()
     
     init() {

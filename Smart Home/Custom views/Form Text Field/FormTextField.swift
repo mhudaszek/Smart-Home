@@ -28,9 +28,14 @@ class FormTextField: View {
         super.setup()
         setupView()
     }
+    
+    func hideKeyboard() {
+        textField.resignFirstResponder()
+    }
 
     func bind(viewModel: FormTextFieldViewModel) {
         fieldIcon.image = viewModel.image
+        textField.isSecureTextEntry = viewModel.isSecureTextEntry
         textField.attributedPlaceholder = AttributedStringBuilder.make(text: viewModel.placeholderText, textColor: UIColor.white.withAlphaComponent(0.5), font: UIFont.systemFont(ofSize: 15))
 
         textField.rx.text.orEmpty
@@ -154,6 +159,8 @@ private extension FormTextField {
         textField.font = UIFont.systemFont(ofSize: 15)
         textField.textColor = .black//.white
         textField.tintColor = .black//.white
+        textField.autocapitalizationType = .none
+        
 //        textField.snp.makeConstraints { (make) in
 //            make.centerY.equalToSuperview()
 //            make.leading.equalTo(fieldIcon.snp.trailing).offset(9.0)

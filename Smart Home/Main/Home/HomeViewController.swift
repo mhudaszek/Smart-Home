@@ -58,8 +58,8 @@ class HomeViewController: ViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
 //            self.createUser()
         }
-        let emailFieldViewModel = FormTextFieldViewModel(validators: [ValuePresenceValidator(fieldName: "e-mail address"), MailValidator()],
-                                                              image: #imageLiteral(resourceName: "bulbIconOn"),
+        //[ValuePresenceValidator(fieldName: "e-mail address"), MailValidator()]
+        let emailFieldViewModel = FormTextFieldViewModel(image: #imageLiteral(resourceName: "bulbIconOn"),
                                                               placeholderText: "Email")
         formTextField.bind(viewModel: emailFieldViewModel)
     }
@@ -159,35 +159,35 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 
 //przenieść
-class ValuePresenceValidator: Validator {
-
-    let fieldName: String
-
-    init(fieldName: String) {
-        self.fieldName = fieldName
-    }
-
-    func validate(text: String) -> ValidationError {
-        if text.isEmpty {
-            return "\(fieldName.capitalized) cannot be empty"
-        } else {
-            return nil
-        }
-    }
-
-}
+//class ValuePresenceValidator: Validator {
+//
+//    let fieldName: String
+//
+//    init(fieldName: String) {
+//        self.fieldName = fieldName
+//    }
+//
+//    func validate(text: String) -> ValidationError {
+//        if text.isEmpty {
+//            return "\(fieldName.capitalized) cannot be empty"
+//        } else {
+//            return nil
+//        }
+//    }
+//
+//}
 
 
 //to też
-class MailValidator: Validator {
-
-    func validate(text: String) -> ValidationError {
-        if text.contains("@") {
-            return nil
-        } else {
-            return "Invalid e-mail address"
-        }
-    }
-
-}
+//class MailValidator: Validator {
+//
+//    func validate(text: String) -> ValidationError {
+//        if text.contains("@") {
+//            return nil
+//        } else {
+//            return "Invalid e-mail address"
+//        }
+//    }
+//
+//}
 

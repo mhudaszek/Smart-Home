@@ -9,6 +9,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+typealias Spacer = UIView
+
 class LoginViewController: ViewController {
     private let gradientView = GradientView()
     private let scrollView = InteractiveScrollView()
@@ -20,7 +22,7 @@ class LoginViewController: ViewController {
         let stackView = UIStackView()
         stackView.distribution = .fill
         stackView.axis = .vertical
-        stackView.spacing = 0
+        stackView.spacing = 5
         stackView.setCustomSpacing(30, after: titleLabel)
         stackView.setCustomSpacing(10, after: passwordTextField)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +53,7 @@ class LoginViewController: ViewController {
         setupViews()
         bindViewModels()
         setupRx()
+        setupTapGesture()
     }
 }
 
@@ -62,6 +65,16 @@ private extension LoginViewController {
 //            .orEmpty
 //            .bind(to: viewModel.email)
 //            .disposed(by: disposeBag)
+        
+        
+//        view.rx.tapGesture()
+//            .when(.recognized)
+//            .map { _ in viewModel.id }
+//            .compactMap { $0 }
+//            .bind(to: viewModel.removeButtonTapped)
+//            .disposed(by: disposeBag)
+        
+        
 
         loginButton.rx.tap
             .subscribe(with: self, onNext: { owner, _ in
@@ -78,7 +91,6 @@ private extension LoginViewController {
             }).disposed(by: disposeBag)
         
         viewModel.loginButtonEnabled
-//            .map { !$0 }
             .skip(1)
             .do(onNext: {[weak self] enabled in
                 self?.loginButton.transitionToColor(enabled ? .mqCoralPink : .brownishGrey)
@@ -97,6 +109,16 @@ private extension LoginViewController {
         emailTextField.bind(viewModel: viewModel.emailTextFieldViewModel)
         passwordTextField.bind(viewModel: viewModel.passwordTextFieldViewModel)
     }
+    
+    func setupTapGesture() {
+        let tapGesture = UITapGestureRecognizer()
+        view.addGestureRecognizer(tapGesture)
+        tapGesture.rx.event
+            .bind(onNext: { [weak self] recognizer in
+                self?.emailTextField.hideKeyboard()
+                self?.passwordTextField.hideKeyboard()
+            }).disposed(by: disposeBag)
+    }
 
     func addSubviews() {
         view.addSubview(scrollView)
@@ -104,15 +126,18 @@ private extension LoginViewController {
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(emailTextField)
         stackView.addArrangedSubview(passwordTextField)
+        stackView.addArrangedSubview(Spacer())
+        stackView.addArrangedSubview(Spacer())
         stackView.addArrangedSubview(loginButton)
         view.addSubview(activityIndicator)
     }
     
     func setupCoordinates() {
         view.activateConstraints(with: scrollView, left: 28, right: 28)
-        scrollView.activateConstraints(with: stackView, top: 100, bottom: 150)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            stackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor, constant: -100),
             stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
