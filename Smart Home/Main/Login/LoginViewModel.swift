@@ -19,13 +19,6 @@ class LoginViewModel {
     let inProgress = BehaviorRelay<Bool>(value: false)
 
     let loginSucceeded = PublishSubject<String>()
-//    var loginButtonEnabled: Observable<Bool> {
-//        inProgress.asObservable()
-//            .map { [weak self] _ in
-//                return self?.emailTextFieldViewModel.validate() ?? false
-//                    && self?.passwordTextFieldViewModel.validate() ?? false
-//            }
-//    }
     let emailTextFieldViewModel = FormTextFieldViewModel(image: #imageLiteral(resourceName: "user_login_icon"),
                                                          placeholderText: "Login")
     let passwordTextFieldViewModel = FormTextFieldViewModel(image: #imageLiteral(resourceName: "password_Icon"),
@@ -97,34 +90,3 @@ class LoginViewModel {
                                       cancelAction: noAction)
     }
 }
-
-/*
- func fetchDevices() {
-//        var ref: DatabaseReference!
-//        ref = Database.database().reference()
-     //self.ref.child("users").child(user.uid).setValue(["username": username])
-//        rootRef.ref.child("").child("").setValue(["": ""])
-//        dataBase.child("").
-     let conditionRef = dataBase.child("users/T3TBRXu8E5ZWw9pmCdWAmQNJQkm2/devices")
-//        ref.child("users/7eb5de3b-9075-4fb8-8a04-9339be93c330").getData { (error, snapshot) in
-//
-//        }
-     
-         
-     conditionRef.observe(.value) { [weak self] snap in
-         guard let result = snap.value as? [ResultMap] else { return }
-         let devicesResponse = DevicesResponse(result)
-//            self?.devices.accept(devicesResponse.devices ?? [])
-     }
-     
-     //            completion(userId)
-     //            let object: [String: Any] = ["devices": [nil]]
-     //            self.fetchDevices()
-     //            self.dataBase.child(userId).setValue(object)
-                 
-                 // doczytać
-     // https://community.appinventor.mit.edu/t/how-do-we-connect-to-firebase-db-using-oauth2-from-app-inventor/13810/13
-                 //result?.user.uid
-     //            user doesn't exist, do you want to create one?
- }
- */

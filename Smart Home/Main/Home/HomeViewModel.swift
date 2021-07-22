@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseAuth
 import RxCocoa
 import RxSwift
 
@@ -19,21 +20,20 @@ final class HomeViewModel {
     let devices = BehaviorRelay<[Device]>(value: [])
     private var disposeBag = DisposeBag()
     
+    private var ref: DatabaseReference
+    
     init(service: WeatherService) {
         self.service = service
+        self.ref = Database.database().reference()
     }
     
     func fetchDevices() {
-        //self.ref.child("users").child(user.uid).setValue(["username": username])
-//        rootRef.ref.child("").child("").setValue(["": ""])
-        let conditionRef = dataBase.child(Constants.rootRefChild)
-        conditionRef.observe(.value) { [weak self] snap in
-            guard let result = snap.value as? [ResultMap] else { return }
-            let devicesResponse = DevicesResponse(result)
-            self?.devices.accept(devicesResponse.devices ?? [])
+        ref.child("users/7eb5de3b-9075-4fb8-8a04-9339be93c330").observe(.value) { [weak self] result in
+            let devicesResponse = DevicesResponse(result.value)
+            self?.devices.accept(devicesResponse.devices)
         }
     }
-
+    
     func fetchCurrentWeather(completion: @escaping (WeatherModel) -> Void) {
         fetchLocationData()
         service.getWeatcher { [weak self] weatherDTO in

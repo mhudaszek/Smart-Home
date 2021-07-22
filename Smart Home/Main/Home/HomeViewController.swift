@@ -54,25 +54,6 @@ class HomeViewController: ViewController {
             }
         }
         setupRx()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-//            self.createUser()
-        }
-        //[ValuePresenceValidator(fieldName: "e-mail address"), MailValidator()]
-        let emailFieldViewModel = FormTextFieldViewModel(image: #imageLiteral(resourceName: "bulbIconOn"),
-                                                              placeholderText: "Email")
-        formTextField.bind(viewModel: emailFieldViewModel)
-    }
-    
-    func createUser() {
-        
-        
-//        Auth.auth().signIn(withEmail: "nowyTestowy@o2.pl", password: "qwedsdfs") { result, error in
-//            if error != nil {
-//                print("error")
-//            }
-//            print(result)
-//        }
     }
 }
 
@@ -81,9 +62,6 @@ private extension HomeViewController {
         view.addSubview(weatherView)
         view.addSubview(collectionView)
         view.addSubview(underlineSwitchView)
-        
-        view.addSubview(formTextField)
-//        view.activateConstraints(with: collectionView, left: 20, right: 20)
     }
 
     func setupLayout() {
@@ -105,13 +83,6 @@ private extension HomeViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
-            formTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            formTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
-            formTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-//            formTextField.heightAnchor.constraint(equalToConstant: 50)
-//            formTextField.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            
         ])
     }
 
@@ -156,38 +127,3 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return CGSize(width: width, height: 120)
     }
 }
-
-
-//przenieść
-//class ValuePresenceValidator: Validator {
-//
-//    let fieldName: String
-//
-//    init(fieldName: String) {
-//        self.fieldName = fieldName
-//    }
-//
-//    func validate(text: String) -> ValidationError {
-//        if text.isEmpty {
-//            return "\(fieldName.capitalized) cannot be empty"
-//        } else {
-//            return nil
-//        }
-//    }
-//
-//}
-
-
-//to też
-//class MailValidator: Validator {
-//
-//    func validate(text: String) -> ValidationError {
-//        if text.contains("@") {
-//            return nil
-//        } else {
-//            return "Invalid e-mail address"
-//        }
-//    }
-//
-//}
-

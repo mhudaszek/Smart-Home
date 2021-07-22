@@ -60,7 +60,8 @@ private extension AppCoordinator {
         vc.closeOnboarding
             .subscribe(with: self, onNext: { owner, steps in
                 LocationService.shared.start()
-                owner.showSignInScreen()
+//                owner.showSignInScreen()
+                owner.showHomeScreen()
             }).disposed(by: disposeBag)
     }
 }

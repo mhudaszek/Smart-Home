@@ -24,9 +24,13 @@ struct Device {
 }
 
 struct DevicesResponse {
-    var devices: [Device]?
+    var devices = [Device]()
 
-    init(_ resultMap: [ResultMap]) {
-        self.devices = resultMap.map { Device($0) }
+    init(_ resultMap: Any?) {
+        guard let resultMap = resultMap as? ResultMap else { return }
+        let devicesResultMap = resultMap["devices"] as? [ResultMap] ?? []
+        self.devices = devicesResultMap.map { Device($0) }
+//        self.devices = (resultMap["devices"] as? [ResultMap]).map { Device($0) }
+//        self.devices = resultMap.map { Device($0) }
     }
 }

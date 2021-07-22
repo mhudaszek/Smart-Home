@@ -59,26 +59,12 @@ class LoginViewController: ViewController {
 
 private extension LoginViewController {
     func setupRx() {
-        
-//        emailTextField
-//            .text
-//            .orEmpty
-//            .bind(to: viewModel.email)
-//            .disposed(by: disposeBag)
-        
-        
-//        view.rx.tapGesture()
-//            .when(.recognized)
-//            .map { _ in viewModel.id }
-//            .compactMap { $0 }
-//            .bind(to: viewModel.removeButtonTapped)
-//            .disposed(by: disposeBag)
-        
-        
-
         loginButton.rx.tap
+            .do(onNext: { [weak self] _ in
+                self?.emailTextField.hideKeyboard()
+                self?.passwordTextField.hideKeyboard()
+            })
             .subscribe(with: self, onNext: { owner, _ in
-//                owner.viewModel.login()
                 owner.login()
             }).disposed(by: disposeBag)
 
