@@ -65,9 +65,7 @@ class HomeViewController: ViewController {
     }
     
     func createUser() {
-//        Auth.auth().createUser(withEmail: "nowyTestowy@o2.pl", password: "qwedsdfs") { result, error in
-//            print(result)
-//        }
+        
         
 //        Auth.auth().signIn(withEmail: "nowyTestowy@o2.pl", password: "qwedsdfs") { result, error in
 //            if error != nil {

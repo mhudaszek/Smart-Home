@@ -15,15 +15,15 @@ class HomeCoordinator: Coordinator {
     }
 
     func start() {
-        /*
+        
          let homeViewModel = HomeViewModel(service: WeatherService())
          let homeViewController = HomeViewController(viewModel: homeViewModel)
  //        homeViewController.coordinator = self
          navigationController.pushViewController(homeViewController, animated: false)
-         */
-        
-        let vc = LoginViewController()
-        navigationController.pushViewController(vc, animated: false)
+         
+//        let vm = LoginViewModel()
+//        let vc = LoginViewController(viewModel: vm)
+//        navigationController.pushViewController(vc, animated: false)
     }
 //deviceDetailsViewModel:
 //    func showDeviceDetails(deviceViewModel: DeviceViewModel) {

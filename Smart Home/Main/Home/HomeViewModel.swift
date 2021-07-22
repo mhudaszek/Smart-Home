@@ -15,7 +15,7 @@ final class HomeViewModel {
         static let rootRefChild: String = "devices"
     }
     private let service: WeatherService
-    private let rootRef = Database.database().reference()
+    private let dataBase = Database.database().reference()
     let devices = BehaviorRelay<[Device]>(value: [])
     private var disposeBag = DisposeBag()
     
@@ -24,7 +24,9 @@ final class HomeViewModel {
     }
     
     func fetchDevices() {
-        let conditionRef = rootRef.child(Constants.rootRefChild)
+        //self.ref.child("users").child(user.uid).setValue(["username": username])
+//        rootRef.ref.child("").child("").setValue(["": ""])
+        let conditionRef = dataBase.child(Constants.rootRefChild)
         conditionRef.observe(.value) { [weak self] snap in
             guard let result = snap.value as? [ResultMap] else { return }
             let devicesResponse = DevicesResponse(result)

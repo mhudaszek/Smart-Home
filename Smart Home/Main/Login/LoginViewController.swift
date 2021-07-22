@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class LoginViewController: ViewController {
     private let gradientView = GradientView()
@@ -13,7 +15,7 @@ class LoginViewController: ViewController {
     private let titleLabel = UILabel()
     private let emailTextField = FormTextField()
     private let passwordTextField = FormTextField()
-    private let loginButton = UIButton() //RoundedPinkButton()
+    private let loginButton = RoundedPinkButton()
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fill
@@ -24,6 +26,12 @@ class LoginViewController: ViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+    private let activityIndicator = UIActivityIndicatorView().configure {
+        $0.style = .large
+        $0.color = .black
+    }
+    private let viewModel: LoginViewModel
+    private let disposeBag = DisposeBag()
     
     override func loadView() {
         super.loadView()
@@ -31,25 +39,63 @@ class LoginViewController: ViewController {
         gradientView.set(gradientColors: [.shOrange2, .shOrangeRed2])
     }
     
+    init(viewModel: LoginViewModel) {
+        self.viewModel = viewModel
+        super.init()
+    }
+    
     override func setup() {
         super.setup()
         addSubviews()
         setupCoordinates()
         setupViews()
+        bindViewModels()
+        setupRx()
     }
 }
 
 private extension LoginViewController {
-    func bindViewModels() {
-
-//        emailTextField.bind(viewModel: viewModel.emailFieldViewModel)
-//        passwordTextField.bind(viewModel: viewModel.passwordFieldViewModel)
-//        viewModel.loading.asDriver(onErrorJustReturn: false)
-//            .drive(onNext: { [weak self] loading in
-//                self?.setLoaderVisible(loading)
-//            })
-////            .drive(activityIndicator.rx.isAnimating)
+    func setupRx() {
+        
+//        emailTextField
+//            .text
+//            .orEmpty
+//            .bind(to: viewModel.email)
 //            .disposed(by: disposeBag)
+
+        loginButton.rx.tap
+            .subscribe(with: self, onNext: { owner, _ in
+//                owner.viewModel.login()
+                owner.login()
+            }).disposed(by: disposeBag)
+
+        viewModel.inProgress
+            .skip(1)
+            .subscribe(with: self, onNext: { owner, isLoading in
+                isLoading
+                    ? owner.activityIndicator.startAnimating()
+                    : owner.activityIndicator.stopAnimating()
+            }).disposed(by: disposeBag)
+        
+        viewModel.loginButtonEnabled
+//            .map { !$0 }
+            .skip(1)
+            .do(onNext: {[weak self] enabled in
+                self?.loginButton.transitionToColor(enabled ? .mqCoralPink : .brownishGrey)
+            })
+            .bind(to: loginButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+    }
+    
+    func login() {
+        viewModel.login { [weak self] in
+            self?.showCreateNewAccountAllert()
+        }
+    }
+
+    func bindViewModels() {
+        emailTextField.bind(viewModel: viewModel.emailTextFieldViewModel)
+        passwordTextField.bind(viewModel: viewModel.passwordTextFieldViewModel)
     }
 
     func addSubviews() {
@@ -59,22 +105,52 @@ private extension LoginViewController {
         stackView.addArrangedSubview(emailTextField)
         stackView.addArrangedSubview(passwordTextField)
         stackView.addArrangedSubview(loginButton)
+        view.addSubview(activityIndicator)
     }
     
     func setupCoordinates() {
         view.activateConstraints(with: scrollView, left: 28, right: 28)
         scrollView.activateConstraints(with: stackView, top: 100, bottom: 150)
-        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
     }
     
     func setupViews() {
         scrollView.visibleView = { view in self.loginButton}
+        loginButton.setTitle("Login")
+//        loginButton.transitionToColor(.dark)
+    }
+
+    func showCreateNewAccountAllert() {
+        let alertConfig = viewModel.createNewAccountAlertConfig { [weak self] _ in
+            self?.createNewUser()
+        }
+        showAlert(alertConfig: alertConfig)
+    }
+    
+    func createNewUser() {
+        viewModel.createNewUser { error in
+            print("Something goes wrong: \(String(describing: error))")
+        }
     }
 }
 
 //pozmieniaj i przenieść
 public extension UIColor {
+    // co z tymi kolorami??
+    @nonobjc class var dark: UIColor {
+        return UIColor(red: 38.0 / 255.0, green: 47.0 / 255.0, blue: 54.0 / 255.0, alpha: 1.0)
+    }
 
+    @nonobjc class var brownishGrey: UIColor {
+        return UIColor(white: 114.0 / 255.0, alpha: 1.0)
+    }
+//
     class var shOrange: UIColor {
         return UIColor(red: 236.0 / 255.0, green: 159.0 / 255.0, blue: 5.0 / 255.0, alpha: 1.0)
     }

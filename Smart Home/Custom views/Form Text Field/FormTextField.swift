@@ -109,12 +109,12 @@ private extension FormTextField {
             
             fieldIcon.heightAnchor.constraint(equalToConstant: 25),
             fieldIcon.widthAnchor.constraint(equalToConstant: 25),
-            fieldIcon.centerYAnchor.constraint(equalTo: centerYAnchor),
-            fieldIcon.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 18),
+            fieldIcon.centerYAnchor.constraint(equalTo: inputFieldView.centerYAnchor),
+            fieldIcon.leadingAnchor.constraint(equalTo: inputFieldView.leadingAnchor, constant: 18),
             
-            textField.centerYAnchor.constraint(equalTo: centerYAnchor),
+            textField.centerYAnchor.constraint(equalTo: inputFieldView.centerYAnchor),
             textField.leadingAnchor.constraint(equalTo: fieldIcon.trailingAnchor, constant: 9),
-            textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 18)
+            textField.trailingAnchor.constraint(equalTo: inputFieldView.trailingAnchor, constant: 18)
         ])
     }
 

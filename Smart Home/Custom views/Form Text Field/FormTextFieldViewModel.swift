@@ -7,11 +7,12 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 class FormTextFieldViewModel {
     let image: UIImage
     let placeholderText: String
-    let text = Variable("")
+    let text = BehaviorRelay<String>(value: "")
     let validators: [Validator]
 
     var error: Observable<String?> {
