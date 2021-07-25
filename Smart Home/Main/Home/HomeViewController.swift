@@ -27,6 +27,11 @@ class HomeViewController: ViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     var formTextField = FormTextField()
+    private let activityIndicator = UIActivityIndicatorView().configure {
+        $0.style = .large
+        $0.color = .black
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
 
     private let viewModel: HomeViewModel
     private var disposeBag = DisposeBag()
@@ -47,12 +52,7 @@ class HomeViewController: ViewController {
         setupLayout()
         setupNavigationBar()
         setupCollectionView()
-        viewModel.fetchDevices()
-        viewModel.fetchCurrentWeather { [weak self] model in
-            DispatchQueue.main.async {
-                self?.weatherView.setupView(with: model)
-            }
-        }
+        viewModel.fetch()
         setupRx()
     }
 }
@@ -62,6 +62,7 @@ private extension HomeViewController {
         view.addSubview(weatherView)
         view.addSubview(collectionView)
         view.addSubview(underlineSwitchView)
+        view.addSubview(activityIndicator)
     }
 
     func setupLayout() {
@@ -80,9 +81,12 @@ private extension HomeViewController {
             underlineSwitchView.bottomAnchor.constraint(equalTo: collectionView.topAnchor),
             underlineSwitchView.heightAnchor.constraint(equalToConstant: 50),
 
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
 
@@ -99,9 +103,16 @@ private extension HomeViewController {
     }
 
     func setupRx() {
-        viewModel.devices
-            .subscribe { [weak self] _ in self?.collectionView.reloadData()}
-            .disposed(by: disposeBag)
+        viewModel.inProgress
+            .subscribe(with: self, onNext: { owner, isLoading in
+                isLoading
+                    ? owner.activityIndicator.startAnimating()
+                    : owner.activityIndicator.stopAnimating()
+                owner.underlineSwitchView.isHidden = isLoading
+                guard let weatherModel = owner.viewModel.weatherModel else { return }
+                owner.weatherView.setupView(with: weatherModel)
+                owner.collectionView.reloadData()
+            }).disposed(by: disposeBag)
     }
 }
 
@@ -115,10 +126,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         let deviceCellViewModel = DeviceCellViewModel(device: viewModel.devices.value[indexPath.row])
         cell.setup(with: deviceCellViewModel)
-
-//        cell.showDetailsDidTapped = { [weak self] in
-//            self?.coordinator?.showDeviceDetails(deviceViewModel: deviceViewModel)
-//        }
         return cell
     }
 

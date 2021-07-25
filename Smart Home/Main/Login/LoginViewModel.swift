@@ -30,7 +30,7 @@ class LoginViewModel {
             .map { email, password, inProgress in
                 email.isValidEmail
                     && !password.isEmpty
-                    && password.count > 3
+                    && password.count >= 6
                     && !inProgress
             }
     }

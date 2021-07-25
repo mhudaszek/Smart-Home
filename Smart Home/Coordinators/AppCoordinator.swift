@@ -60,15 +60,16 @@ private extension AppCoordinator {
         vc.closeOnboarding
             .subscribe(with: self, onNext: { owner, steps in
                 LocationService.shared.start()
-//                owner.showSignInScreen()
-                owner.showHomeScreen()
+                owner.showSignInScreen()
+//                owner.showHomeScreen(with: "")
             }).disposed(by: disposeBag)
     }
 }
 
 private extension AppCoordinator {
-    func showHomeScreen() {
-        let homeCoordinator = HomeCoordinator(navigationController: rootViewController)
+    func showHomeScreen(with userId: String) {
+        let homeCoordinator = HomeCoordinator(navigationController: rootViewController,
+                                              userId: userId)
         add(coordinator: homeCoordinator, type: .home)
         homeCoordinator.start()
     }
@@ -85,7 +86,7 @@ private extension AppCoordinator {
     func setupRx(vm: LoginViewModel) {
         vm.loginSucceeded
             .subscribe(with: self, onNext: { owner, userId in
-                owner.showHomeScreen()
+                owner.showHomeScreen(with: userId)
             }).disposed(by: disposeBag)
     }
 }

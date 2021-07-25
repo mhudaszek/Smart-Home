@@ -9,14 +9,16 @@ import UIKit
 
 class HomeCoordinator: Coordinator {
     var navigationController: UINavigationController
+    private let userId: String
 
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, userId: String) {
         self.navigationController = navigationController
+        self.userId = userId
     }
 
     func start() {
-        
-         let homeViewModel = HomeViewModel(service: WeatherService())
+        let homeViewModel = HomeViewModel(service: WeatherService(),
+                                          userId: userId)
          let homeViewController = HomeViewController(viewModel: homeViewModel)
  //        homeViewController.coordinator = self
          navigationController.pushViewController(homeViewController, animated: false)

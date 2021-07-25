@@ -19,7 +19,7 @@ struct Device {
 
     init(_ resultMap: ResultMap) {
         self.id = resultMap["id"] as? Int
-        self.title = resultMap["title"] as? String
+        self.title = resultMap["name"] as? String
     }
 }
 

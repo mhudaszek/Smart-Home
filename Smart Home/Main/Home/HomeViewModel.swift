@@ -15,39 +15,50 @@ final class HomeViewModel {
     private enum Constants {
         static let rootRefChild: String = "devices"
     }
+    private let userId: String
     private let service: WeatherService
     private let dataBase = Database.database().reference()
+    var weatherModel: WeatherModel?
+
     let devices = BehaviorRelay<[Device]>(value: [])
+    let inProgress = BehaviorRelay<Bool>(value: true)
     private var disposeBag = DisposeBag()
     
-    private var ref: DatabaseReference
-    
-    init(service: WeatherService) {
+    private var database: DatabaseReference
+    private let group = DispatchGroup()
+
+    init(service: WeatherService, userId: String) {
         self.service = service
-        self.ref = Database.database().reference()
+        self.userId = userId
+        self.database = Database.database().reference()
+    }
+    
+    func fetch() {
+        inProgress.accept(true)
+        fetchCurrentWeather()
+        fetchDevices()
+        group.notify(queue: .main) { [weak self] in
+            self?.inProgress.accept(false)
+        }
     }
     
     func fetchDevices() {
-        ref.child("users/7eb5de3b-9075-4fb8-8a04-9339be93c330").observe(.value) { [weak self] result in
+        group.enter()
+        database.child("users/\(userId)").observe(.value) { [weak self] result in
             let devicesResponse = DevicesResponse(result.value)
             self?.devices.accept(devicesResponse.devices)
+            self?.group.leave()
         }
     }
-    
-    func fetchCurrentWeather(completion: @escaping (WeatherModel) -> Void) {
-        fetchLocationData()
+
+    func fetchCurrentWeather() {
+        group.enter()
         service.getWeatcher { [weak self] weatherDTO in
-            self?.service.getLocationData { locationDataDTO in
-                let model = WeatherModel(weatherDTO: weatherDTO, locationDataDTO: locationDataDTO)
-                completion(model)
+            self?.service.getLocationData { [weak self] locationDataDTO in
+                self?.weatherModel = WeatherModel(weatherDTO: weatherDTO,
+                                         locationDataDTO: locationDataDTO)
+                self?.group.leave()
             }
-            
-        }
-    }
-    
-    func fetchLocationData() {
-        service.getLocationData { locationData in
-            print(locationData)
         }
     }
 }
